@@ -21,6 +21,9 @@ import { Routing_channelList } from "./pages/routing_channel/list";
 import {ChatShow} from "./pages/chat/show";
 
 import {TaskList} from "./pages/task/list";
+import {RoutingList} from "./pages/routing/list";
+import {Mcc_mncList} from "./pages/mcc_mnc/list";
+import {Mcc_mncEdit} from "./pages/mcc_mnc/edit";
 
 function App() {
   return (
@@ -35,12 +38,12 @@ function App() {
       <Resource name="customer" list={ListGuesser} edit={EditGuesser} show={CustomerShow}/>
       <Resource name="customer_routing" list={Customer_routingList} edit={EditGuesser} show={ShowGuesser}/>
       <Resource name="customer_rate" list={Customer_rateList} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="routing" list={ListGuesser} edit={EditGuesser} show={RoutingShow}/>
+      <Resource name="routing" list={RoutingList} edit={EditGuesser} show={RoutingShow}/>
       <Resource name="routing_mcc_mnc" list={Routing_mcc_mncList} edit={EditGuesser} show={ShowGuesser}/>
       <Resource name="routing_channel" list={Routing_channelList} edit={EditGuesser} show={ShowGuesser}/>
       <Resource name="user" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
       <Resource name="role" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="mcc_mnc" list={ListGuesser} edit={EditGuesser} show={ShowGuesser} recordRepresentation={(record) => `${record.country}:${record.mcc}:${record.mnc}`}/>
+      <Resource name="mcc_mnc" list={Mcc_mncList} edit={Mcc_mncEdit} show={ShowGuesser} recordRepresentation={(record) => `${record.country}:${record.mcc}:${record.mnc}`}/>
       <Resource name="operator" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
       <Resource name="payment" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
       <Resource name="operator" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
