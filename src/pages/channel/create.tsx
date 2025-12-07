@@ -1,3 +1,4 @@
+import { NumberInput } from "@/components/admin";
 import { AutocompleteInput } from "@/components/admin/autocomplete-input";
 import { BooleanInput } from "@/components/admin/boolean-input";
 import { Create } from "@/components/admin/create";
@@ -8,15 +9,13 @@ import { TextInput } from "@/components/admin/text-input";
 export const ChannelCreate = () => (
     <Create>
         <SimpleForm>
-        <div className="flex flex-row gap-4 flex-wrap">
             <TextInput source="name" />
-            <TextInput source="enable" />
-            <TextInput source="status" />
-            <TextInput source="sessions" />
-            <TextInput source="connections" />
-            <TextInput source="type" />
+            <NumberInput source="status" />
+            <NumberInput source="sessions" />
+            <NumberInput source="connections" />
+            <NumberInput source="type" />
             <TextInput source="peer_ip" />
-            <TextInput source="peer_port" />
+            <NumberInput source="peer_port" />
             <TextInput source="username" />
             <TextInput source="password" />
             <TextInput source="allowed_prefixes" />
@@ -24,30 +23,25 @@ export const ChannelCreate = () => (
             <TextInput source="allowed_senders" />
             <TextInput source="restricted_senders" />
             <TextInput source="description" />
-            <TextInput source="rate_limit" />
-            <TextInput source="request_expiry_timeout" />
-            <TextInput source="window_size" />
-            <TextInput source="data_coding" />
+            <NumberInput source="rate_limit" />
+            <NumberInput source="request_expiry_timeout" />
+            <NumberInput source="window_size" />
+            <NumberInput source="data_coding" />
             <TextInput source="counting_rule" />
-            <TextInput source="dst_ton" />
-            <TextInput source="dst_npi" />
-            <TextInput source="src_ton" />
-            <TextInput source="src_npi" />
-            <TextInput source="created_at" />
+            <NumberInput source="dst_ton" />
+            <NumberInput source="dst_npi" />
+            <NumberInput source="src_ton" />
+            <NumberInput source="src_npi" />
             <TextInput source="dev_mac" />
             <TextInput source="connect_at" />
-            <TextInput source="http_type" />
+            <NumberInput source="http_type" />
             <TextInput source="billing_rule" />
-            <TextInput source="balance" />
-            <TextInput source="overdraft_limit" />
-            <TextInput source="submit_threshold" />
-            <TextInput source="deliver_threshold" />
+            <NumberInput source="submit_threshold" />
+            <NumberInput source="deliver_threshold" />
             <TextInput source="sender" />
-            <BooleanInput source="is_deleted" />
             <ReferenceInput source="supplier_id" reference="supplier">
                   <AutocompleteInput />
               </ReferenceInput>
-        </div>
         </SimpleForm>
     </Create>
 );

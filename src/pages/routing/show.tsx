@@ -2,8 +2,7 @@ import { DateField } from "@/components/admin/date-field";
 import { NumberField } from "@/components/admin/number-field";
 import { RecordField } from "@/components/admin/record-field";
 import { Show } from "@/components/admin/show";
-import { ReferenceManyField } from "@/components/admin/reference-many-field";
-import { DataTable } from "@/components/admin/data-table";
+import { ReferenceArrayField } from "@/components/admin";
 
 export const RoutingShow = () => (
     <Show>
@@ -24,32 +23,18 @@ export const RoutingShow = () => (
                 <DateField source="priority" />
             </RecordField>
         </div>
+
         <div className="flex flex-col gap-4 mt-4">
-            <ReferenceManyField reference="customer" target="id">
-                <DataTable>
-                    <DataTable.Col source="id" />
-                    <DataTable.Col source="name" />
-                    <DataTable.Col source="created_at" />
-                </DataTable>
-            </ReferenceManyField>
+                <ReferenceArrayField reference="customer" source="customers" />
+
         </div>
         <div className="flex flex-col gap-4 mt-4">
-            <ReferenceManyField reference="channel" target="id">
-                <DataTable>
-                    <DataTable.Col source="id" />
-                    <DataTable.Col source="name" />
-                    <DataTable.Col source="created_at" />
-                </DataTable>
-            </ReferenceManyField>
+                <ReferenceArrayField reference="channel" source="channels" />
+
         </div>
-        <div className="flex flex-col gap-4 mt-4">
-            <ReferenceManyField reference="mcc_mnc" target="id">
-                <DataTable>
-                    <DataTable.Col source="id" />
-                    <DataTable.Col source="name" />
-                    <DataTable.Col source="created_at" />
-                </DataTable>
-            </ReferenceManyField>
+                <div className="flex flex-col gap-4 mt-4">
+                <ReferenceArrayField reference="mcc_mnc" source="mcc_mnc" />
+
         </div>
     </Show>
 );

@@ -24,37 +24,38 @@ import {TaskList} from "./pages/task/list";
 import {RoutingList} from "./pages/routing/list";
 import {Mcc_mncList} from "./pages/mcc_mnc/list";
 import {Mcc_mncEdit} from "./pages/mcc_mnc/edit";
+import {RoutingEdit} from "./pages/routing/edit";
 
 function App() {
   return (
     <Admin dataProvider={dataProvider}
       authProvider={authProvider}
       loginPage={LoginPage}>
-      <Resource name="tenant" list={TenantList} edit={EditGuesser} show={TenantShow}/>
-      <Resource name="tenant_rate" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="supplier" list={ListGuesser} edit={EditGuesser} show={SupplierShow}/>
-      <Resource name="supplier_rate" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="channel" list={ChannelList} create={ChannelCreate} edit={EditGuesser} show={ChannelShow}/>
-      <Resource name="customer" list={ListGuesser} edit={EditGuesser} show={CustomerShow}/>
-      <Resource name="customer_routing" list={Customer_routingList} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="customer_rate" list={Customer_rateList} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="routing" list={RoutingList} edit={EditGuesser} show={RoutingShow}/>
-      <Resource name="routing_mcc_mnc" list={Routing_mcc_mncList} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="routing_channel" list={Routing_channelList} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="user" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="role" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="mcc_mnc" list={Mcc_mncList} edit={Mcc_mncEdit} show={ShowGuesser} recordRepresentation={(record) => `${record.country}:${record.mcc}:${record.mnc}`}/>
-      <Resource name="operator" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="payment" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="operator" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="black_list" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="content_rule" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="permission" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
+      <Resource name="tenant" list={TenantList} edit={EditGuesser}/>
+      <Resource name="tenant_rate" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="supplier" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="supplier_rate" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="channel" list={ChannelList} create={ChannelCreate} edit={EditGuesser} />
+      <Resource name="customer" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="customer_routing" list={Customer_routingList} edit={EditGuesser} />
+      <Resource name="customer_rate" list={Customer_rateList} edit={EditGuesser} />
+      <Resource name="routing" list={RoutingList} edit={RoutingEdit}/>
+      <Resource name="routing_mcc_mnc" list={Routing_mcc_mncList} edit={EditGuesser} />
+      <Resource name="routing_channel" list={Routing_channelList} edit={EditGuesser} />
+      <Resource name="user" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="role" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="mcc_mnc" list={Mcc_mncList} edit={Mcc_mncEdit}  recordRepresentation={(record) => `${record.country}:${record.mcc}:${record.mnc}`}/>
+      <Resource name="operator" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="payment" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="operator" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="black_list" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="content_rule" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="permission" list={ListGuesser} edit={EditGuesser} />
       <Resource name="chat" list={ListGuesser} show={ChatShow}/>
-      <Resource name="mo_message" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="prefix_rule" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="ip_pool" list={ListGuesser} edit={EditGuesser} show={ShowGuesser}/>
-      <Resource name="task" list={TaskList} edit={EditGuesser} show={ShowGuesser}/>
+      <Resource name="mo_message" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="prefix_rule" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="ip_pool" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="task" list={TaskList} edit={EditGuesser} />
     </Admin>
   );
 }

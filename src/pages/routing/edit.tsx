@@ -2,18 +2,26 @@ import { BooleanInput } from "@/components/admin/boolean-input";
 import { Edit } from "@/components/admin/edit";
 import { SimpleForm } from "@/components/admin/simple-form";
 import { TextInput } from "@/components/admin/text-input";
+import {ArrayInput, ReferenceArrayInput,AutocompleteArrayInput,SimpleFormIterator, TextField, NumberInput, ReferenceInput} from "@/components/admin";
 
-export const Mcc_mncEdit = () => (
+export const RoutingEdit = () => (
     <Edit>
         <SimpleForm>
-            <TextInput source="id" />
-            <TextInput source="mcc" />
-            <TextInput source="mnc" />
-            <TextInput source="prefix" />
+            <div className="flex flex-row gap-4 flex-wrap">
+            <TextInput source="name" />
             <TextInput source="created_at" />
-            <TextInput source="updated_at" />
-            <TextInput source="country" />
-            <BooleanInput source="is_deleted" />
+            <ReferenceInput source="creator" reference="user"/>
+            <TextInput source="description" />
+            <NumberInput source="priority" />
+<ReferenceArrayInput source="customers" reference="customer" />
+<ReferenceArrayInput source="channels" reference="channel">
+    <AutocompleteArrayInput label="Channel" />
+</ReferenceArrayInput>
+<ReferenceArrayInput source="mcc_mnc" reference="mcc_mnc">
+    <AutocompleteArrayInput label="Mcc" />
+</ReferenceArrayInput>
+ </div>
+            
         </SimpleForm>
     </Edit>
 );
