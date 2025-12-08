@@ -1,4 +1,4 @@
-import { NumberInput } from "@/components/admin";
+import { Edit, NumberInput } from "@/components/admin";
 import { AutocompleteInput } from "@/components/admin/autocomplete-input";
 import { BooleanInput } from "@/components/admin/boolean-input";
 import { Create } from "@/components/admin/create";
@@ -6,15 +6,14 @@ import { ReferenceInput } from "@/components/admin/reference-input";
 import { SimpleForm } from "@/components/admin/simple-form";
 import { TextInput } from "@/components/admin/text-input";
 
-export const ChannelCreate = () => (
-    <Create>
+export const ChannelEdit = () => (
+    <Edit>
         <SimpleForm>
             <TextInput source="name" />
             <NumberInput source="status" />
             <NumberInput source="sessions" />
             <NumberInput source="connections" />
             <NumberInput source="type" />
-
             <TextInput source="username" />
             <TextInput source="password" />
             <TextInput source="peer_ip" />
@@ -44,5 +43,5 @@ export const ChannelCreate = () => (
                   <AutocompleteInput />
               </ReferenceInput>
         </SimpleForm>
-    </Create>
+    </Edit>
 );
