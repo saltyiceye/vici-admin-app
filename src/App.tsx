@@ -26,6 +26,10 @@ import {Mcc_mncList} from "./pages/mcc_mnc/list";
 import {Mcc_mncEdit} from "./pages/mcc_mnc/edit";
 import {RoutingEdit} from "./pages/routing/edit";
 
+import {CustomerRateList} from "./pages/customer_rate/list";
+import { CustomerRateEdit } from "./pages/customer_rate/edit";
+import { CustomerRateCreate } from "./pages/customer_rate/create";
+
 function App() {
   return (
     <Admin dataProvider={dataProvider}
@@ -38,7 +42,7 @@ function App() {
       <Resource name="channel" list={ChannelList} create={ChannelCreate} edit={EditGuesser} />
       <Resource name="customer" list={ListGuesser} edit={EditGuesser} />
       <Resource name="customer_routing" list={Customer_routingList} edit={EditGuesser} />
-      <Resource name="customer_rate" list={Customer_rateList} edit={EditGuesser} />
+      <Resource name="customer_rate" list={CustomerRateList} edit={CustomerRateEdit} create={CustomerRateCreate}/>
       <Resource name="routing" list={RoutingList} edit={RoutingEdit}/>
       <Resource name="routing_mcc_mnc" list={Routing_mcc_mncList} edit={EditGuesser} />
       <Resource name="routing_channel" list={Routing_channelList} edit={EditGuesser} />

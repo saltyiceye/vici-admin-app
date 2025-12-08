@@ -2,7 +2,7 @@ import { DataTable } from "@/components/admin/data-table";
 import { List } from "@/components/admin/list";
 import { ReferenceField } from "@/components/admin/reference-field";
 
-export const Customer_rateList = () => (
+export const CustomerRateList = () => (
     <List>
         <DataTable>
             <DataTable.Col source="id" />
