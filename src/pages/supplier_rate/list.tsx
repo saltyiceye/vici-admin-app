@@ -15,7 +15,6 @@ export const SupplierRateList = () => (
             <DataTable.Col source="price" />
             <DataTable.Col source="created_at" />
             <DataTable.Col source="description" />
-            <DataTable.Col source="is_deleted" />
         </DataTable>
     </List>
 );

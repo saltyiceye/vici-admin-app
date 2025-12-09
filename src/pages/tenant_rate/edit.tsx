@@ -18,12 +18,6 @@ export const TenantRateEdit = () => (
             <TextInput source="price" />
             <TextInput source="direction" />
             <TextInput source="description" />
-            <TextInput source="created_at" />
-            <TextInput source="updated_at" />
-            <ReferenceInput source="creator_id" reference="user">
-                  <AutocompleteInput />
-              </ReferenceInput>
-            <BooleanInput source="is_deleted" />
         </SimpleForm>
     </Edit>
 );

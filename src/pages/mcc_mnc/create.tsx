@@ -1,13 +1,12 @@
 import { NumberInput } from "@/components/admin";
 import { BooleanInput } from "@/components/admin/boolean-input";
-import { Edit } from "@/components/admin/edit";
+import { Create } from "@/components/admin/create";
 import { SimpleForm } from "@/components/admin/simple-form";
 import { TextInput } from "@/components/admin/text-input";
 
-export const Mcc_mncEdit = () => (
-    <Edit>
+export const MccMncCreate = () => (
+    <Create>
         <SimpleForm>
-            <TextInput source="id" />
             <NumberInput source="mcc" />
             <NumberInput source="mnc" />
             <TextInput source="prefix" />
@@ -16,5 +15,5 @@ export const Mcc_mncEdit = () => (
             <TextInput source="country" />
             <BooleanInput source="is_deleted" />
         </SimpleForm>
-    </Edit>
+    </Create>
 );

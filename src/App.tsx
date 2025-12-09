@@ -1,5 +1,5 @@
 import { Resource } from "ra-core";
-import { ListGuesser, EditGuesser, ShowGuesser } from "@/components/admin";
+import { ListGuesser, EditGuesser } from "@/components/admin";
 import { Admin } from "@/components/admin/admin";
 import { LoginPage } from "./login-page";
 import { dataProvider } from "@/dataProvider.ts";
@@ -7,6 +7,7 @@ import { authProvider } from "@/authProvider.ts";
 
 import { ChannelCreate } from "./pages/channel/create";
 import { ChannelList } from "./pages/channel/list";
+
 import { Customer_routingList } from "./pages/customer_routing/list";
 import { Routing_mcc_mncList } from "./pages/routing_mcc_mnc/list";
 import { Routing_channelList } from "./pages/routing_channel/list";
@@ -23,11 +24,17 @@ import { CustomerRateList } from "./pages/customer_rate/list";
 import { CustomerRateEdit } from "./pages/customer_rate/edit";
 import { CustomerRateCreate } from "./pages/customer_rate/create";
 import { SdrList } from "./pages/sdr/list";
-import { SdrShow } from "./pages/sdr/show";
+
+import {MccMncCreate} from "./pages/mcc_mnc/create";
+
+import { RoutingCreate } from "./pages/routing/create";
+
 
 import { TenantRateCreate } from "./pages/tenant_rate/create";
 import { TenantRateEdit } from "./pages/tenant_rate/edit";
 import { TenantRateList } from "./pages/tenant_rate/list";
+
+
 
 import { TenantList } from "./pages/tenant/list";
 import { TenantCreate } from "./pages/tenant/create";
@@ -54,7 +61,7 @@ function App() {
     <Admin dataProvider={dataProvider}
       authProvider={authProvider}
       loginPage={LoginPage}>
-      <Resource name="sdr" list={SdrList} show={SdrShow} />
+      <Resource name="sdr" list={SdrList}/>
       <Resource name="queue" list={ListGuesser}/>
       <Resource name="tenant" list={TenantList} edit={TenantEdit} create={TenantCreate}/>
       <Resource name="tenant_rate" list={TenantRateList} edit={TenantRateEdit} create={TenantRateCreate}/>
@@ -64,12 +71,12 @@ function App() {
       <Resource name="customer" list={CustomerList} edit={CustomerEdit} create={CustomerCreate}/>
       <Resource name="customer_routing" list={Customer_routingList} edit={EditGuesser} />
       <Resource name="customer_rate" list={CustomerRateList} edit={CustomerRateEdit} create={CustomerRateCreate} />
-      <Resource name="routing" list={RoutingList} edit={RoutingEdit} />
+      <Resource name="routing" list={RoutingList} edit={RoutingEdit} create={RoutingCreate}/>
       <Resource name="routing_mcc_mnc" list={Routing_mcc_mncList} edit={EditGuesser} />
       <Resource name="routing_channel" list={Routing_channelList} edit={EditGuesser} />
       <Resource name="user" list={ListGuesser} edit={EditGuesser} />
       <Resource name="role" list={ListGuesser} edit={EditGuesser} />
-      <Resource name="mcc_mnc" list={Mcc_mncList} edit={Mcc_mncEdit} recordRepresentation={(record) => `${record.country}:${record.mcc}:${record.mnc}`} />
+      <Resource name="mcc_mnc" list={Mcc_mncList} edit={Mcc_mncEdit} create={MccMncCreate} recordRepresentation={(record) => `${record.country}:${record.mcc}:${record.mnc}`} />
       <Resource name="operator" list={ListGuesser} edit={EditGuesser} />
       <Resource name="payment" list={ListGuesser} edit={EditGuesser} />
       <Resource name="operator" list={ListGuesser} edit={EditGuesser} />

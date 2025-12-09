@@ -18,8 +18,6 @@ export const SupplierRateEdit = () => (
             <NumberInput source="price" />
             <NumberInput source="direction" />
             <TextInput source="description" />
-            <TextInput source="created_at" />
-            <TextInput source="updated_at" />
         </SimpleForm>
     </Edit>
 );
