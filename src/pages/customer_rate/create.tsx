@@ -8,17 +8,17 @@ export const CustomerRateCreate = () => (
     <Create>
         <SimpleForm>
             <ReferenceInput source="customer_id" reference="customer">
-                  <AutocompleteInput />
-              </ReferenceInput>
+                <AutocompleteInput />
+            </ReferenceInput>
             <ReferenceInput source="mcc_mnc_id" reference="mcc_mnc">
-                  <AutocompleteInput />
-              </ReferenceInput>
+                <AutocompleteInput />
+            </ReferenceInput>
             <NumberInput source="price" />
-            <NumberInput source="direction" />
+            <NumberInput source="direction" helperText="0=mt,1=mo" />
             <TextInput source="description" />
             <ReferenceInput source="creator_id" reference="user">
-                  <AutocompleteInput />
-              </ReferenceInput>
+                <AutocompleteInput />
+            </ReferenceInput>
         </SimpleForm>
     </Create>
 );

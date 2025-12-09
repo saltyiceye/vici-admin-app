@@ -1,5 +1,5 @@
+import { NumberInput } from "@/components/admin";
 import { AutocompleteInput } from "@/components/admin/autocomplete-input";
-import { BooleanInput } from "@/components/admin/boolean-input";
 import { Edit } from "@/components/admin/edit";
 import { ReferenceInput } from "@/components/admin/reference-input";
 import { SimpleForm } from "@/components/admin/simple-form";
@@ -8,22 +8,15 @@ import { TextInput } from "@/components/admin/text-input";
 export const CustomerRateEdit = () => (
     <Edit>
         <SimpleForm>
-            <TextInput source="id" />
             <ReferenceInput source="customer_id" reference="customer">
-                  <AutocompleteInput />
-              </ReferenceInput>
+                <AutocompleteInput />
+            </ReferenceInput>
             <ReferenceInput source="mcc_mnc_id" reference="mcc_mnc">
-                  <AutocompleteInput />
-              </ReferenceInput>
-            <TextInput source="price" />
-            <TextInput source="direction" />
+                <AutocompleteInput />
+            </ReferenceInput>
+            <NumberInput source="price" />
+            <NumberInput source="direction" helperText="0=mt,1=mo" />
             <TextInput source="description" />
-            <TextInput source="created_at" />
-            <TextInput source="updated_at" />
-            <ReferenceInput source="creator_id" reference="user">
-                  <AutocompleteInput />
-              </ReferenceInput>
-            <BooleanInput source="is_deleted" />
         </SimpleForm>
     </Edit>
 );
