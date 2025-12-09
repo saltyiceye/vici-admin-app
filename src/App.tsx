@@ -5,16 +5,9 @@ import { LoginPage } from "./login-page";
 import { dataProvider } from "@/dataProvider.ts";
 import { authProvider } from "@/authProvider.ts";
 
-import { TenantShow } from "./pages/tenant/show";
-import { TenantList } from "./pages/tenant/list";
-import { CustomerShow } from "./pages/customer/show";
-import { SupplierShow } from "./pages/supplier/show";
-import { ChannelShow } from "./pages/channel/show";
-import { RoutingShow } from "./pages/routing/show";
 import { ChannelCreate } from "./pages/channel/create";
 import { ChannelList } from "./pages/channel/list";
 import { Customer_routingList } from "./pages/customer_routing/list";
-import { Customer_rateList } from "./pages/customer_rate/list";
 import { Routing_mcc_mncList } from "./pages/routing_mcc_mnc/list";
 import { Routing_channelList } from "./pages/routing_channel/list";
 
@@ -32,6 +25,30 @@ import { CustomerRateCreate } from "./pages/customer_rate/create";
 import { SdrList } from "./pages/sdr/list";
 import { SdrShow } from "./pages/sdr/show";
 
+import { TenantRateCreate } from "./pages/tenant_rate/create";
+import { TenantRateEdit } from "./pages/tenant_rate/edit";
+import { TenantRateList } from "./pages/tenant_rate/list";
+
+import { TenantList } from "./pages/tenant/list";
+import { TenantCreate } from "./pages/tenant/create";
+import { TenantEdit } from "./pages/tenant/edit";
+
+import { SupplierCreate } from "./pages/supplier/create";
+import { SupplierEdit } from "./pages/supplier/edit";
+import { SupplierList } from "./pages/supplier/list";
+
+import { CustomerList } from "./pages/customer/list";
+import { CustomerCreate } from "./pages/customer/create";
+import { CustomerEdit } from "./pages/customer/edit";
+
+import { SalesList } from "./pages/sales/list";
+import { SalesEdit } from "./pages/sales/edit";
+import { SalesCreate } from "./pages/sales/create";
+
+import { SupplierRateList } from "./pages/supplier_rate/list";
+import { SupplierRateEdit } from "./pages/supplier_rate/edit";
+import { SupplierRateCreate } from "./pages/supplier_rate/create";
+
 function App() {
   return (
     <Admin dataProvider={dataProvider}
@@ -39,12 +56,12 @@ function App() {
       loginPage={LoginPage}>
       <Resource name="sdr" list={SdrList} show={SdrShow} />
       <Resource name="queue" list={ListGuesser}/>
-      <Resource name="tenant" list={TenantList} edit={EditGuesser} />
-      <Resource name="tenant_rate" list={ListGuesser} edit={EditGuesser} />
-      <Resource name="supplier" list={ListGuesser} edit={EditGuesser} />
-      <Resource name="supplier_rate" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="tenant" list={TenantList} edit={TenantEdit} create={TenantCreate}/>
+      <Resource name="tenant_rate" list={TenantRateList} edit={TenantRateEdit} create={TenantRateCreate}/>
+      <Resource name="supplier" list={SupplierList} edit={SupplierEdit} create={SupplierCreate}/>
+      <Resource name="supplier_rate" list={SupplierRateList} edit={SupplierRateEdit} create={SupplierRateCreate}/>
       <Resource name="channel" list={ChannelList} create={ChannelCreate} edit={EditGuesser} />
-      <Resource name="customer" list={ListGuesser} edit={EditGuesser} />
+      <Resource name="customer" list={CustomerList} edit={CustomerEdit} create={CustomerCreate}/>
       <Resource name="customer_routing" list={Customer_routingList} edit={EditGuesser} />
       <Resource name="customer_rate" list={CustomerRateList} edit={CustomerRateEdit} create={CustomerRateCreate} />
       <Resource name="routing" list={RoutingList} edit={RoutingEdit} />
@@ -64,6 +81,8 @@ function App() {
       <Resource name="prefix_rule" list={ListGuesser} edit={EditGuesser} />
       <Resource name="ip_pool" list={ListGuesser} edit={EditGuesser} />
       <Resource name="task" list={TaskList} edit={EditGuesser} />
+      <Resource name="sales" list={SalesList} create={SalesCreate} edit={SalesEdit} />
+
     </Admin>
   );
 }

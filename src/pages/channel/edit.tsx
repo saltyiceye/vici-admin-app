@@ -1,4 +1,4 @@
-import { NumberInput } from "@/components/admin";
+import { ArrayInput, Edit, NumberInput, SelectInput } from "@/components/admin";
 import { AutocompleteInput } from "@/components/admin/autocomplete-input";
 import { BooleanInput } from "@/components/admin/boolean-input";
 import { Create } from "@/components/admin/create";
@@ -6,14 +6,19 @@ import { ReferenceInput } from "@/components/admin/reference-input";
 import { SimpleForm } from "@/components/admin/simple-form";
 import { TextInput } from "@/components/admin/text-input";
 
-export const ChannelCreate = () => (
-    <Create>
+export const ChannelEdit = () => (
+    <Edit>
         <SimpleForm className="grid grid-cols-3 gap-4">
         <TextInput source="name" />
             <NumberInput source="status" />
             <NumberInput source="sessions" />
             <NumberInput source="connections" />
             <NumberInput source="type" />
+            <SelectInput source="type" optionText={"name"} optionValue={"_id"} choices={[
+                { _id: 0, name: 'Smpp' },
+                { _id: 1, name: 'Device' },
+                { _id: 2, name: 'Http' },
+            ]} />
             <TextInput source="peer_ip" />
             <NumberInput source="peer_port" />
             <TextInput source="username" />
@@ -43,5 +48,5 @@ export const ChannelCreate = () => (
                   <AutocompleteInput />
               </ReferenceInput>
         </SimpleForm>
-    </Create>
+    </Edit>
 );
