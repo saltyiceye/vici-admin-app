@@ -2,7 +2,7 @@ import { BooleanInput } from "@/components/admin/boolean-input";
 import { Edit } from "@/components/admin/edit";
 import { SimpleForm } from "@/components/admin/simple-form";
 import { TextInput } from "@/components/admin/text-input";
-import {ArrayInput, ReferenceArrayInput,AutocompleteArrayInput,SimpleFormIterator, TextField, NumberInput, ReferenceInput} from "@/components/admin";
+import { ReferenceArrayInput,AutocompleteArrayInput, NumberInput} from "@/components/admin";
 
 export const RoutingEdit = () => (
     <Edit>

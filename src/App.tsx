@@ -132,8 +132,8 @@ function App() {
       <Resource name="sales" list={SalesList} create={SalesCreate} edit={SalesEdit} />
       <Resource name="user" list={UserList} edit={UserEdit} create={UserCreate} />
       <CustomRoutes>
-            <Route path="/send_sms" element={<SendSmsCreate />} />
-        </CustomRoutes>
+        <Route path="/send_sms" element={<SendSmsCreate />} />
+      </CustomRoutes>
     </Admin>
   );
 }

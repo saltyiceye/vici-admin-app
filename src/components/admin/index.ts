@@ -60,7 +60,7 @@ export * from "./show-button";
 export * from "./show-guesser";
 export * from "./show";
 export * from "./simple-form";
-export * from "./simple-form-iterator";
+// export * from "./simple-form-iterator";
 export * from "./simple-show-layout";
 export * from "./single-field-list";
 export * from "./sort-button";
