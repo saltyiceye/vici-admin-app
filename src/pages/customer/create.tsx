@@ -1,6 +1,5 @@
 import { BooleanInput, Create, NumberInput } from "@/components/admin";
 import { AutocompleteInput } from "@/components/admin/autocomplete-input";
-import { Edit } from "@/components/admin/edit";
 import { ReferenceInput } from "@/components/admin/reference-input";
 import { SimpleForm } from "@/components/admin/simple-form";
 import { TextInput } from "@/components/admin/text-input";
@@ -11,7 +10,6 @@ export const CustomerCreate = () => (
             <TextInput source="username" />
             <TextInput source="name" />
             <TextInput source="password" type="password"/>
-            <NumberInput source="balance" />
             <NumberInput source="overdraft_limit" />
             <TextInput source="email" />
             <BooleanInput source="smpp_switch" />

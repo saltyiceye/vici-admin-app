@@ -1,3 +1,4 @@
+import { TextField } from "@/components/admin";
 import { DateField } from "@/components/admin/date-field";
 import { NumberField } from "@/components/admin/number-field";
 import { RecordField } from "@/components/admin/record-field";
@@ -6,10 +7,9 @@ import { Show } from "@/components/admin/show";
 
 export const SdrShow = () => (
     <Show>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-4">
+        <div className="grid grid-cols-3 gap-4">
                 <RecordField source="id">
-                    <NumberField source="id" />
+                    <TextField source="id" />
                 </RecordField>
                 <RecordField source="created_at">
                     <DateField source="created_at" />
@@ -48,9 +48,7 @@ export const SdrShow = () => (
                 <RecordField source="dst_npi">
                     <NumberField source="dst_npi" />
                 </RecordField>
-            </div>
-
-            <div className="space-y-4">
+            
                 <RecordField source="channel_type">
                     <NumberField source="channel_type" />
                 </RecordField>
@@ -112,7 +110,7 @@ export const SdrShow = () => (
                 <RecordField source="sms_type">
                     <DateField source="sms_type" />
                 </RecordField>
-            </div>
+            
         </div>
     </Show>
 );

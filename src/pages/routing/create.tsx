@@ -7,15 +7,10 @@ import {ArrayInput, ReferenceArrayInput,AutocompleteArrayInput,SimpleFormIterato
 export const RoutingCreate = () => (
     <Create>
         <SimpleForm>
-            <div className="flex flex-row gap-4 flex-wrap">
             <TextInput source="name" />
-            <TextInput source="created_at" />
-            <ReferenceInput source="creator" reference="user"/>
             <TextInput source="description" />
             <NumberInput source="priority" />
-            <NumberInput source="strategy_id" />
- </div>
-            
+            <NumberInput source="strategy_id" />   
         </SimpleForm>
     </Create>
 );

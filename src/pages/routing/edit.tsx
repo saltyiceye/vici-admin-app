@@ -7,21 +7,16 @@ import {ArrayInput, ReferenceArrayInput,AutocompleteArrayInput,SimpleFormIterato
 export const RoutingEdit = () => (
     <Edit>
         <SimpleForm>
-            <div className="flex flex-row gap-4 flex-wrap">
             <TextInput source="name" />
-            <TextInput source="created_at" />
-            <ReferenceInput source="creator" reference="user"/>
             <TextInput source="description" />
             <NumberInput source="priority" />
-<ReferenceArrayInput source="customers" reference="customer" />
-<ReferenceArrayInput source="channels" reference="channel">
-    <AutocompleteArrayInput label="Channel" />
-</ReferenceArrayInput>
-<ReferenceArrayInput source="mcc_mnc" reference="mcc_mnc">
-    <AutocompleteArrayInput label="Mcc" />
-</ReferenceArrayInput>
- </div>
-            
+            <ReferenceArrayInput source="customers" reference="customer" />
+            <ReferenceArrayInput source="channels" reference="channel">
+                <AutocompleteArrayInput label="Channel" />
+            </ReferenceArrayInput>
+            <ReferenceArrayInput source="mcc_mnc" reference="mcc_mnc">
+                <AutocompleteArrayInput label="Mcc" />
+            </ReferenceArrayInput>            
         </SimpleForm>
     </Edit>
 );

@@ -7,8 +7,8 @@ import { TextInput } from "@/components/admin/text-input";
 
 export const ChannelEdit = () => (
     <Edit>
-        <SimpleForm>
-            <TextInput source="name" />
+        <SimpleForm className="grid grid-cols-3 gap-4">
+        <TextInput source="name" />
             <BooleanInput source="enable" />
             <NumberInput source="status" />
             <NumberInput source="sessions" />

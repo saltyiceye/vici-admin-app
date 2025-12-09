@@ -8,7 +8,7 @@ import { DataTable } from "@/components/admin/data-table";
 
 export const ChatShow = () => (
     <Show>
-        <div className="flex flex-row gap-4 flex-wrap">
+        <div className="grid grid-cols-3 gap-4">
         <RecordField source="id">
                 <NumberField source="id" />
             </RecordField>

@@ -10,8 +10,6 @@ export const CustomerEdit = () => (
         <SimpleForm className="grid grid-cols-3 gap-4">
         <TextInput source="username" />
             <TextInput source="name" />
-            <TextInput source="password" type="password" />
-            <NumberInput source="balance" />
             <NumberInput source="overdraft_limit" />
             <TextInput source="email" />
             <BooleanInput source="smpp_switch" />
