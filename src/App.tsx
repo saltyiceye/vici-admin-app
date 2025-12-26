@@ -96,6 +96,7 @@ import { SdrShow } from "./pages/sdr/show";
 import { SendSmsCreate } from "./pages/send_sms/create";
 import Dashboard from "./pages/dashboard";
 import { ViciLayout } from "./components/layout/vici-layout";
+import { CustomerIndex } from "./pages/customer";
 
 function App() {
   return (
@@ -105,7 +106,6 @@ function App() {
       dashboard={Dashboard}
       layout={ViciLayout}
     >
-
       <Resource name="sdr" list={SdrList} show={SdrShow} />
       <Resource name="queue" list={SdrList} show={SdrShow} />
       <Resource name="tenant" list={TenantList} edit={TenantEdit} create={TenantCreate} />
@@ -135,6 +135,7 @@ function App() {
       <Resource name="user" list={UserList} edit={UserEdit} create={UserCreate} />
       <CustomRoutes>
         <Route path="/send_sms" element={<SendSmsCreate />} />
+        <Route path="/customer/index" element={<CustomerIndex />} />
       </CustomRoutes>
     </Admin>
   );

@@ -24,17 +24,17 @@ import {
 } from "@/components/ui/sidebar";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { House, List, Shell } from "lucide-react";
+import { List, Send, TabletSmartphone } from "lucide-react";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-      const resources = useResourceDefinitions();
-    const { openMobile, setOpenMobile } = useSidebar();
+  const resources = useResourceDefinitions();
+  const { openMobile, setOpenMobile } = useSidebar();
   const handleClick = () => {
     if (openMobile) {
       setOpenMobile(false);
     }
   };
-  
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -45,8 +45,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <a href="#">
-                {/* <IconInnerShadowTop className="!size-5" /> */}
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <TabletSmartphone className="!size-5" />
+                <span className="text-base font-semibold">VICISMS</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -54,20 +54,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {Object.keys(resources)
-                  .filter((name) => resources[name].hasList)
-                  .map((name) => (
-                    <ResourceMenuItem
-                      key={name}
-                      name={name}
-                      onClick={handleClick}
-                    />
-                  ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SendSmsMenuItem onClick={handleClick} />
+              {Object.keys(resources)
+                .filter((name) => resources[name].hasList)
+                .map((name) => (
+                  <ResourceMenuItem
+                    key={name}
+                    name={name}
+                    onClick={handleClick}
+                  />
+                ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         {/* <NavMain items={data.navMain} />
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
@@ -78,6 +79,40 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
   )
 }
+
+
+export const SendSmsMenuItem = ({
+  onClick,
+}: {
+  onClick?: () => void;
+}) => {
+
+  const to = '/send-sms';
+  const match = useMatch({ path: to, end: false });
+
+  return (
+    <SidebarMenuItem>
+      <SidebarMenuButton asChild isActive={!!match}
+        // className="bg-primary text-primary-foreground"
+        className={cn(
+          // 基础过渡效果
+          "transition-colors duration-200",
+          // 激活状态 - 使用 shadcn/ui 的数据属性
+          "data-[active=true]:bg-primary data-[active=true]:text-primary-foreground",
+          // 悬停状态
+          "hover:bg-accent hover:text-accent-foreground",
+          // 如果还需要自定义覆盖
+          match && "bg-primary text-primary-foreground"
+        )}
+      >
+        <Link to={to} state={{ _scrollToTop: true }} onClick={onClick}>
+          <Send />
+          Send SMS
+        </Link>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
+  );
+};
 
 export const ResourceMenuItem = ({
   name,

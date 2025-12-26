@@ -3,7 +3,7 @@ import { List } from "@/components/admin/list";
 import { ReferenceField } from "@/components/admin/reference-field";
 
 export const CustomerRateList = () => (
-    <List>
+    <List resource="customer_rate" title="Customer Rates">
         <DataTable>
             <DataTable.Col source="id" />
             <DataTable.Col source="customer_id">

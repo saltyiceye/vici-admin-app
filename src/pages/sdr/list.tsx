@@ -3,18 +3,16 @@ import { DateField, List, SelectField } from "@/components/admin";
 import { ReferenceField } from "@/components/admin/reference-field";
 
 export const SdrList = () => (
-    <List sort={{ field: "created_at", order: "DESC" }}>
+    <List sort={{ field: "created_at", order: "DESC" }} loading={<>Loading...</> }>
         <DataTable>
             <DataTable.Col source="id" />
-            <DataTable.Col source="created_at">
-                <DateField source="created_at" />
-            </DataTable.Col>
+            <DataTable.Col source="created_at" />
 
             <DataTable.Col source="customer_id">
                 <ReferenceField source="customer_id" reference="customer" />
             </DataTable.Col>
             <DataTable.Col source="task_id">
-                <ReferenceField source="task_id" reference="task" />
+                <ReferenceField source="task_id" reference="task" link={false}/>
             </DataTable.Col>
             <DataTable.Col source="receiver" />
             <DataTable.Col source="sender" />
