@@ -16,6 +16,27 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useListPaginationContext, Translate, useTranslate } from "ra-core";
 
+/**
+ * A pagination component with page numbers and rows per page selector.
+ *
+ * Displays pagination controls with previous/next buttons, page numbers with ellipsis for long lists,
+ * and a dropdown to change items per page. Works with List context.
+ *
+ * @see {@link https://marmelab.com/shadcn-admin-kit/docs/listpagination/ ListPagination documentation}
+ *
+ * @example
+ * import { List, ListPagination } from '@/components/admin';
+ *
+ * const PostListPagination = () => (
+ *   <ListPagination rowsPerPageOptions={[5, 10, 25]} />
+ * );
+ *
+ * export const PostList = () => (
+ *   <List pagination={<PostListPagination />}>
+ *     // ...
+ *   </List>
+ * );
+ */
 export const ListPagination = ({
   rowsPerPageOptions = [5, 10, 25, 50],
   className,
@@ -128,19 +149,27 @@ export const ListPagination = ({
       <Pagination className="-w-full -mx-auto">
         <PaginationContent>
           <PaginationItem>
-            <PaginationLink
-              href="#"
-              onClick={pageChangeHandler(page - 1)}
-              className={cn(
-                "gap-1 px-2.5 sm:pr-2.5",
-                !hasPreviousPage ? "opacity-50 cursor-not-allowed" : "",
-              )}
-              aria-label={translate("ra.navigation.previous", {
-                _: "Previous",
-              })}
-            >
-              <ChevronLeftIcon />
-            </PaginationLink>
+            {hasPreviousPage ? (
+              <PaginationLink
+                href="#"
+                onClick={pageChangeHandler(page - 1)}
+                aria-label={translate("ra.navigation.previous", {
+                  _: "Previous",
+                })}
+              >
+                <ChevronLeftIcon />
+              </PaginationLink>
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium size-9">
+                <ChevronLeftIcon
+                  aria-label={translate("ra.navigation.previous", {
+                    _: "Previous",
+                  })}
+                  size="16"
+                  className="text-muted-foreground"
+                />
+              </span>
+            )}
           </PaginationItem>
           {startPages.map((pageNumber) => (
             <PaginationItem key={pageNumber}>
@@ -206,18 +235,28 @@ export const ListPagination = ({
             </PaginationItem>
           ))}
           <PaginationItem>
-            <PaginationLink
-              href="#"
-              onClick={pageChangeHandler(page + 1)}
-              size="default"
-              className={cn(
-                "gap-1 px-2.5 sm:pr-2.5",
-                !hasNextPage ? "opacity-50 cursor-not-allowed" : "",
-              )}
-              aria-label={translate("ra.navigation.next", { _: "Next" })}
-            >
-              <ChevronRightIcon />
-            </PaginationLink>
+            {hasNextPage ? (
+              <PaginationLink
+                href="#"
+                onClick={pageChangeHandler(page + 1)}
+                size="default"
+                className={cn(
+                  "gap-1 px-2.5 sm:pr-2.5",
+                  !hasNextPage ? "opacity-50 cursor-not-allowed" : "",
+                )}
+                aria-label={translate("ra.navigation.next", { _: "Next" })}
+              >
+                <ChevronRightIcon />
+              </PaginationLink>
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium size-9">
+                <ChevronRightIcon
+                  aria-label={translate("ra.navigation.next", { _: "Next" })}
+                  size="16"
+                  className="text-muted-foreground"
+                />
+              </span>
+            )}
           </PaginationItem>
         </PaginationContent>
       </Pagination>

@@ -95,6 +95,7 @@ import { TaskShow } from "./pages/task/show";
 import { SdrShow } from "./pages/sdr/show";
 import { SendSmsCreate } from "./pages/send_sms/create";
 import Dashboard from "./pages/dashboard";
+import { ViciLayout } from "./components/layout/vici-layout";
 
 function App() {
   return (
@@ -102,6 +103,7 @@ function App() {
       authProvider={authProvider}
       loginPage={LoginPage}
       dashboard={Dashboard}
+      layout={ViciLayout}
     >
 
       <Resource name="sdr" list={SdrList} show={SdrShow} />

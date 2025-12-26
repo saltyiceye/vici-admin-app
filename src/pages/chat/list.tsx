@@ -21,7 +21,7 @@ export const ChatList = () => (
             </DataTable.Col>
             <DataTable.Col source="unanswered" />
             <DataTable.Col source="channel_id">
-                <ReferenceField source="channel_id" reference="channels" />
+                <ReferenceField source="channel_id" reference="channel" />
             </DataTable.Col>
             <DataTable.Col source="dev_port" />
             <DataTable.Col source="created_at" />
