@@ -1,25 +1,79 @@
 import { DataTable } from "@/components/admin/data-table";
-import { DateField, List, SelectField } from "@/components/admin";
+import { AutocompleteInput, DateTimeInput, DateField, List, SelectField, TextInput, ReferenceInput } from "@/components/admin";
 import { ReferenceField } from "@/components/admin/reference-field";
+import { LongTextField } from "@/components/field/LongTextField";
+
+const sdrFilters = [
+    <DateTimeInput source="created_at_gte" alwaysOn label={false} />,
+    <DateTimeInput source="created_at_lte" alwaysOn label={false} />,
+    <TextInput source="msg_id" alwaysOn placeholder="MsgId" label={false} />,
+    <TextInput source="receiver" alwaysOn placeholder="Number" label={false} />,
+    <ReferenceInput label={false} source="mcc_mnc_id" reference="mcc_mnc" alwaysOn>
+        <AutocompleteInput label={false} placeholder="MCC_MNC" />
+    </ReferenceInput>,
+    <AutocompleteInput
+        source="send_result"
+        optionText="name"
+        optionValue="_id"
+        choices={[
+            { _id: 0, name: 'waiting' },
+            { _id: 1, name: 'sending' },
+            { _id: 2, name: 'success' },
+            { _id: 3, name: 'failed' },
+        ]}
+        alwaysOn
+        label={false}
+        placeholder="Send Result"
+    />,
+    <AutocompleteInput
+        source="deliver_result"
+        optionText="name"
+        optionValue="_id"
+        choices={[
+            { _id: 0, name: 'none' },
+            { _id: 1, name: 'pending' },
+            { _id: 2, name: 'delivered' },
+            { _id: 3, name: 'failed' },
+            { _id: 8, name: 'rejected' },
+        ]}
+        alwaysOn
+        label={false}
+        placeholder="Deliver Result"
+    />,
+    <ReferenceInput label={false} source="tenant_id" reference="tenant" alwaysOn>
+        <AutocompleteInput label={false} placeholder="Tenant" />
+    </ReferenceInput>,
+    <ReferenceInput label={false} source="customer_id" reference="customer" alwaysOn>
+        <AutocompleteInput label={false} placeholder="Customer" />
+    </ReferenceInput>,
+    <ReferenceInput label={false} source="agent_id" reference="agent" alwaysOn>
+        <AutocompleteInput label={false} placeholder="Agent" />
+    </ReferenceInput>,
+
+    <ReferenceInput label={false} source="route_id" reference="route" alwaysOn >
+        <AutocompleteInput label={false} placeholder="Route" />
+    </ReferenceInput>,
+    <ReferenceInput label={false} source="channel_id" reference="channel" alwaysOn>
+        <AutocompleteInput label={false} placeholder="Channel" />
+    </ReferenceInput>,
+
+];
 
 export const SdrList = () => (
-    <List sort={{ field: "created_at", order: "DESC" }} loading={<>Loading...</> }>
-        <DataTable>
-            <DataTable.Col source="id" />
-            <DataTable.Col source="created_at" />
-
+    <List filters={sdrFilters} sort={{ field: "created_at", order: "DESC" }} loading={<>Loading...</>}>
+        <DataTable loading={<>Loading...</>} rowClick={false}>
+            <DataTable.Col source="created_at">
+                <DateField source="created_at" showTime={true} />
+            </DataTable.Col>
             <DataTable.Col source="customer_id">
-                <ReferenceField source="customer_id" reference="customer" />
+                <ReferenceField source="customer_id" reference="customer" link={false} />
             </DataTable.Col>
-            <DataTable.Col source="task_id">
-                <ReferenceField source="task_id" reference="task" link={false}/>
-            </DataTable.Col>
+
             <DataTable.Col source="receiver" />
             <DataTable.Col source="sender" />
             <DataTable.Col source="mcc_mnc_id">
-                <ReferenceField source="mcc_mnc_id" reference="mcc_mnc" />
+                <ReferenceField source="mcc_mnc_id" reference="mcc_mnc" link={false} />
             </DataTable.Col>
-            <DataTable.Col source="send_result" />
             <DataTable.Col source="send_result">
                 <SelectField source="send_result" optionText="name" optionValue="_id"
                     choices={[
@@ -31,55 +85,88 @@ export const SdrList = () => (
                     className="status-field"
                 />
             </DataTable.Col>
-            <DataTable.Col source="send_fail_reason" />
-            <DataTable.Col source="deliver_at" />
+
             <DataTable.Col source="deliver_result">
-            <SelectField source="deliver_result" optionText="name" optionValue="_id"
+                <SelectField source="deliver_result" optionText="name" optionValue="_id"
                     choices={[
                         { _id: 0, name: 'none' },
                         { _id: 1, name: 'pending' },
                         { _id: 2, name: 'delivered' },
                         { _id: 3, name: 'failed' },
-                        { _id: 4, name: 'failed' },
-                        { _id: 5, name: 'failed' },
-                        { _id: 6, name: 'failed' },
-                        { _id: 7, name: 'failed' },
                         { _id: 8, name: 'rejected' },
                     ]}
                     className="status-field"
                 />
             </DataTable.Col>
+            <DataTable.Col source="deliver_at" >
+                <DateField source="deliver_at" showTime={true} />
+            </DataTable.Col>
+            <DataTable.Col source="send_fail_reason" />
             <DataTable.Col source="deliver_fail_reason" />
-            <DataTable.Col source="out_msg_id" />
+            <DataTable.Col source="id" label="Msg id" />
+            <DataTable.Col source="out_msg_id" label="Out msg id" />
             <DataTable.Col source="charging_num" />
-            <DataTable.Col source="msg_text" />
+            <DataTable.Col source="msg_text">
+                <LongTextField source="msg_text" />
+            </DataTable.Col>
+            <DataTable.Col source="task_id">
+                <ReferenceField source="task_id" reference="task" link={false} />
+            </DataTable.Col>
             <DataTable.Col source="source_ip" />
-            <DataTable.Col source="channel_type" />
-            <DataTable.Col source="route_id">
-                <ReferenceField source="route_id" reference="routing" />
+            <DataTable.Col source="channel_type">
+                <SelectField source="channel_type" optionText="name" optionValue="_id"
+                    choices={[
+                        { _id: 0, name: 'SMPP' },
+                        { _id: 1, name: 'DEVICE' },
+                        { _id: 2, name: 'HTTP' }
+                    ]}
+                    className="status-field"
+                />
+            </DataTable.Col>
+            {/* <DataTable.Col source="route_id">
+                <ReferenceField source="route_id" reference="routing" link={false}/>
             </DataTable.Col>
             <DataTable.Col source="channel_id">
-                <ReferenceField source="channel_id" reference="channel" />
-            </DataTable.Col>
+                <ReferenceField source="channel_id" reference="channel" link={false}/>
+            </DataTable.Col> */}
             <DataTable.Col source="dev_port" />
-            <DataTable.Col source="send_at" />
-            <DataTable.Col source="source_type" />
-            <DataTable.Col source="tenant_id">
-                <ReferenceField source="tenant_id" reference="tenant" />
+            <DataTable.Col source="send_at" >
+                <DateField source="send_at" showTime={true} />
+            </DataTable.Col>
+            <DataTable.Col source="source_type" >
+                <SelectField source="source_type" optionText="name" optionValue="_id"
+                    choices={[
+                        { _id: 0, name: 'SMPP' },
+                        { _id: 1, name: 'WEB' },
+                        { _id: 2, name: 'HTTP' }
+                    ]}
+                    className="status-field"
+                />
+            </DataTable.Col>
+            {/* <DataTable.Col source="tenant_id">
+                <ReferenceField source="tenant_id" reference="tenant" link={false}/>
             </DataTable.Col>
             <DataTable.Col source="supplier_id">
-                <ReferenceField source="supplier_id" reference="supplier" />
+                <ReferenceField source="supplier_id" reference="supplier" link={false}/>
             </DataTable.Col>
             <DataTable.Col source="customer_sales_id">
-                <ReferenceField source="customer_sales_id" reference="user" />
-            </DataTable.Col>
+                <ReferenceField source="customer_sales_id" reference="user" link={false}/>
+            </DataTable.Col> */}
             <DataTable.Col source="tenant_cost" />
             <DataTable.Col source="customer_cost" />
             <DataTable.Col source="supplier_cost" />
-            <DataTable.Col source="supplier_sales_id">
-                <ReferenceField source="supplier_sales_id" reference="user" />
+            {/* <DataTable.Col source="supplier_sales_id">
+                <ReferenceField source="supplier_sales_id" reference="user" link={false}/>
+            </DataTable.Col> */}
+            <DataTable.Col source="sms_type" >
+                <SelectField source="sms_type" optionText="name" optionValue="_id"
+                    choices={[
+                        { _id: 0, name: 'SMS' },
+                        { _id: 1, name: 'MMS' }
+                    ]}
+                    className="status-field"
+                />
             </DataTable.Col>
-            <DataTable.Col source="sms_type" />
         </DataTable>
     </List>
 );

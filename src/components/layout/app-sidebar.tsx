@@ -87,7 +87,7 @@ export const SendSmsMenuItem = ({
   onClick?: () => void;
 }) => {
 
-  const to = '/send-sms';
+  const to = '/send_sms';
   const match = useMatch({ path: to, end: false });
 
   return (

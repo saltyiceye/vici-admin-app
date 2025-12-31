@@ -111,17 +111,19 @@ export const ReactAdminTabs: React.FC = () => {
               style={{ minWidth: '140px', maxWidth: '200px' }}
               onClick={() => handleTabClick(tab.id)}
             >
-              <div className="flex items-center gap-2 px-3 py-1.5 flex-1">
-                {tab.id === 'dashboard' ? (
-                  <Home className="h-3 w-3" />
-                ) : (
-                  <span className="h-3 w-3 rounded-full bg-primary/20" />
-                )}
+              <div className="flex items-center justify-between px-3 py-1.5 flex-1">
+                <div className="flex items-center gap-2 flex-1">
+                    {tab.id === 'dashboard' ? (
+                    <Home className="h-3 w-3" />
+                    ) : (
+                    <span className="h-3 w-3 rounded-full bg-primary/20" />
+                    )}
 
-                <span className="text-sm font-medium truncate">
-                  {tab.title}
-                </span>
-
+                    <span className="text-sm font-medium truncate">
+                    {tab.title}
+                    </span>
+                </div>
+                
                 {tab.closable !== false && tab.id !== 'dashboard' && (
                   <Button
                     variant="ghost"
