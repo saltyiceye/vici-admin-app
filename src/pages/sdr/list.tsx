@@ -16,10 +16,10 @@ const sdrFilters = [
         optionText="name"
         optionValue="_id"
         choices={[
-            { _id: 0, name: 'waiting' },
-            { _id: 1, name: 'sending' },
-            { _id: 2, name: 'success' },
-            { _id: 3, name: 'failed' },
+            { _id: 0, name: 'Waiting' },
+            { _id: 1, name: 'Sending' },
+            { _id: 2, name: 'Success' },
+            { _id: 3, name: 'Failed' },
         ]}
         alwaysOn
         label={false}
@@ -30,11 +30,11 @@ const sdrFilters = [
         optionText="name"
         optionValue="_id"
         choices={[
-            { _id: 0, name: 'none' },
-            { _id: 1, name: 'pending' },
-            { _id: 2, name: 'delivered' },
-            { _id: 3, name: 'failed' },
-            { _id: 8, name: 'rejected' },
+            { _id: 0, name: 'None' },
+            { _id: 1, name: 'Pending' },
+            { _id: 2, name: 'Delivered' },
+            { _id: 3, name: 'Failed' },
+            { _id: 8, name: 'Rejected' },
         ]}
         alwaysOn
         label={false}
@@ -50,8 +50,8 @@ const sdrFilters = [
         <AutocompleteInput label={false} placeholder="Agent" />
     </ReferenceInput>,
 
-    <ReferenceInput label={false} source="route_id" reference="route" alwaysOn >
-        <AutocompleteInput label={false} placeholder="Route" />
+    <ReferenceInput label={false} source="route_id" reference="routing" alwaysOn >
+        <AutocompleteInput label={false} placeholder="Routing" />
     </ReferenceInput>,
     <ReferenceInput label={false} source="channel_id" reference="channel" alwaysOn>
         <AutocompleteInput label={false} placeholder="Channel" />
@@ -61,7 +61,7 @@ const sdrFilters = [
 
 export const SdrList = () => (
     <List filters={sdrFilters} sort={{ field: "created_at", order: "DESC" }} loading={<>Loading...</>}>
-        <DataTable loading={<>Loading...</>} rowClick={false}>
+        <DataTable loading={<>Loading...</>} rowClick={false} bulkActionButtons={false}>
             <DataTable.Col source="created_at">
                 <DateField source="created_at" showTime={true} />
             </DataTable.Col>
@@ -77,10 +77,10 @@ export const SdrList = () => (
             <DataTable.Col source="send_result">
                 <SelectField source="send_result" optionText="name" optionValue="_id"
                     choices={[
-                        { _id: 0, name: 'waiting' },
-                        { _id: 1, name: 'sending' },
-                        { _id: 2, name: 'success' },
-                        { _id: 3, name: 'failed' },
+                        { _id: 0, name: 'Waiting' },
+                        { _id: 1, name: 'Sending' },
+                        { _id: 2, name: 'Success' },
+                        { _id: 3, name: 'Failed' },
                     ]}
                     className="status-field"
                 />
@@ -89,11 +89,11 @@ export const SdrList = () => (
             <DataTable.Col source="deliver_result">
                 <SelectField source="deliver_result" optionText="name" optionValue="_id"
                     choices={[
-                        { _id: 0, name: 'none' },
-                        { _id: 1, name: 'pending' },
-                        { _id: 2, name: 'delivered' },
-                        { _id: 3, name: 'failed' },
-                        { _id: 8, name: 'rejected' },
+                        { _id: 0, name: 'None' },
+                        { _id: 1, name: 'Pending' },
+                        { _id: 2, name: 'Delivered' },
+                        { _id: 3, name: 'Failed' },
+                        { _id: 8, name: 'Rejected' },
                     ]}
                     className="status-field"
                 />
@@ -134,7 +134,8 @@ export const SdrList = () => (
                 <DateField source="send_at" showTime={true} />
             </DataTable.Col>
             <DataTable.Col source="source_type" >
-                <SelectField source="source_type" optionText="name" optionValue="_id"
+                <SelectField 
+                    source="source_type" optionText="name" optionValue="_id"
                     choices={[
                         { _id: 0, name: 'SMPP' },
                         { _id: 1, name: 'WEB' },
