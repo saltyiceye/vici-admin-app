@@ -1,7 +1,5 @@
 
 import { Suspense, useState, type ErrorInfo, type ReactNode } from "react";
-import { cn } from "@/lib/utils";
-import type { CoreLayoutProps } from "ra-core";
 import { ErrorBoundary } from "react-error-boundary";
 // import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { UserMenu } from "@/components/admin/user-menu";
@@ -12,8 +10,10 @@ import { RefreshButton } from "@/components/admin/refresh-button";
 import { LocalesMenuButton } from "@/components/admin/locales-menu-button";
 import { Error } from "@/components/admin/error";
 import { Loading } from "@/components/admin/loading";
-import { Separator } from "@/components/ui/separator"
 
+import { ReactAdminTabs } from './tabs/ReactAdminTabs';
+import { RouteToTabListener } from './tabs/RouteToTabListener';
+import { TabToRouteListener } from './tabs/TabToRouteListener';
 
 import {
   SidebarInset,
@@ -37,6 +37,9 @@ export const ViciLayout = (props: { children: ReactNode }) => {
       }
     >
       <AppSidebar variant="inset" />
+      <RouteToTabListener />
+      <TabToRouteListener />
+
       <SidebarInset>
         <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
           <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
@@ -48,6 +51,8 @@ export const ViciLayout = (props: { children: ReactNode }) => {
             <UserMenu />
           </div>
         </header>
+
+        <ReactAdminTabs />
 
         {/* <SectionCards />
               <div className="px-4 lg:px-6">
