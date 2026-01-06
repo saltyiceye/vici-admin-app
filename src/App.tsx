@@ -125,7 +125,7 @@ function App() {
       <Resource name="payment" list={PaymentList} show={PaymentShow} />
       <Resource name="black_list" list={Black_listList} edit={Black_listEdit} create={Black_listCreate} />
       <Resource name="content_rule" list={Content_ruleList} edit={Content_ruleEdit} create={Content_ruleCreate} />
-      <Resource name="permission" list={PermissionList} edit={PermissionEdit} create={PermissionCreate} />
+      <Resource name="permission" list={PermissionList} edit={PermissionEdit} create={PermissionCreate} recordRepresentation={(record) => `${record.resource}:${record.permission_name}`}/>
       <Resource name="chat" list={ChatList} show={ChatShow} />
       <Resource name="mo_message" list={Mo_messageList} show={Mo_messageShow} />
       <Resource name="prefix_rule" list={PrefixRuleList} edit={PrefixRuleEdit} create={PrefixRuleCreate} />
