@@ -1,6 +1,7 @@
 
 import {SectionCards} from "./section-cards";
 import {ChartAreaInteractive} from "./chart-area-interactive";
+import { SimpleWebSocketDemo } from "@/components/websocket/SimpleWebSocketDemo";
 
 export default function Dashboard() {
   return (

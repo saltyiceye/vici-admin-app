@@ -5,6 +5,7 @@ import { TextInput } from "@/components/admin/text-input";
 import { SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { Form, RaRecord, useDataProvider, useRedirect, useNotify } from "ra-core";
+import { SimpleWebSocketDemo } from "@/components/websocket/SimpleWebSocketDemo";
 
 export type SalesFormData = {
     email: string;
@@ -40,6 +41,7 @@ export const SendSmsCreate = () => {
     };
 
     return (
+        <>
         <SimpleForm onSubmit={onSubmit as SubmitHandler<any>}>
             <SelectInput source="sms_type" optionText="name" optionValue="_id" parse={value => Number(value)}
                 choices={[
@@ -65,5 +67,11 @@ export const SendSmsCreate = () => {
             <NumberInput source="number_cell_idx" />
             <TextInput source="from" />
         </SimpleForm>
+        <div className="h-4">
+                <SimpleWebSocketDemo />
+              </div>
+
+        </>
+        
     );
 };
