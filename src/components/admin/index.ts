@@ -71,3 +71,4 @@ export * from "./theme-mode-toggle";
 export * from "./theme-provider";
 export * from "./url-field";
 export * from "./user-menu";
+export * from "./image-field";
