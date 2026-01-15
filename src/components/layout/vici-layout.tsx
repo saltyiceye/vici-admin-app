@@ -40,46 +40,50 @@ export const ViciLayout = (props: { children: ReactNode }) => {
       <RouteToTabListener />
       <TabToRouteListener />
 
-      <SidebarInset>
-        <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
-          <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
-            <SidebarTrigger className="-ml-1" />
-            <div className="flex-1 flex items-center" id="breadcrumb" />
-            <LocalesMenuButton />
-            <ThemeModeToggle />
-            <RefreshButton />
-            <UserMenu />
+      <SidebarInset className="!w-auto !min-w-0">
+        <div className="flex flex-col min-w-0 w-full">
+
+          <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
+            <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
+              <SidebarTrigger className="-ml-1" />
+              <div className="flex-1 flex items-center" id="breadcrumb" />
+              <LocalesMenuButton />
+              <ThemeModeToggle />
+              <RefreshButton />
+              <UserMenu />
+            </div>
+          </header>
+
+          <div className="min-w-0">
+            <ReactAdminTabs />
           </div>
-        </header>
 
-        <ReactAdminTabs />
-
-        {/* <SectionCards />
+          {/* <SectionCards />
               <div className="px-4 lg:px-6">
                 <ChartAreaInteractive />
               </div>
               <DataTable data={data} /> */}
-        <ErrorBoundary
-          onError={handleError}
-          fallbackRender={({ error, resetErrorBoundary }) => (
-            <Error
-              error={error}
-              errorInfo={errorInfo}
-              resetErrorBoundary={resetErrorBoundary}
-            />
-          )}
-        >
-          <Suspense fallback={<Loading />}>
-            <div className="flex flex-1 flex-col">
-              <div className="@container/main flex flex-1 flex-col gap-2">
-                <div className="flex flex-col gap-2 py-4 md:gap-6">
-                  <div className="flex flex-1 flex-col px-4 ">{props.children}</div>
+          <ErrorBoundary
+            onError={handleError}
+            fallbackRender={({ error, resetErrorBoundary }) => (
+              <Error
+                error={error}
+                errorInfo={errorInfo}
+                resetErrorBoundary={resetErrorBoundary}
+              />
+            )}
+          >
+            <Suspense fallback={<Loading />}>
+              <div className="flex flex-1 flex-col">
+                <div className="@container/main flex flex-1 flex-col gap-2">
+                  <div className="flex flex-col gap-2 py-4 md:gap-6">
+                    <div className="flex flex-1 flex-col px-4 ">{props.children}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Suspense>
-        </ErrorBoundary>
-
+            </Suspense>
+          </ErrorBoundary>
+        </div>
       </SidebarInset>
       <Notification />
     </SidebarProvider>

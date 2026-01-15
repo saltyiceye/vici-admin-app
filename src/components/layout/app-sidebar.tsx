@@ -8,6 +8,7 @@ import {
   useCreatePath,
   useGetResourceLabel,
   useResourceDefinitions,
+  usePermissions,
 } from "ra-core";
 import { Link, useMatch } from "react-router";
 import {
@@ -56,7 +57,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SendSmsMenuItem onClick={handleClick} />
+            <SendSmsMenuItem key="send_sms" onClick={handleClick} />
               {Object.keys(resources)
                 .filter((name) => resources[name].hasList)
                 .map((name) => (
@@ -89,6 +90,16 @@ export const SendSmsMenuItem = ({
 
   const to = '/send_sms';
   const match = useMatch({ path: to, end: false });
+  const { canAccess, isPending } = useCanAccess({
+    resource: "send_sms",
+    action: "create",
+  });
+
+  if (isPending) {
+    return <Skeleton className="h-8 w-full" />;
+  }
+
+  if (!canAccess) return null;
 
   return (
     <SidebarMenuItem>

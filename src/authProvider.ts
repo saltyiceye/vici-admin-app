@@ -92,14 +92,10 @@ export const authProvider: AuthProvider = {
     canAccess: async ({ action, record, resource }) =>{
         const token = localStorage.getItem(USER_STORAGE_KEY) ? localStorage.getItem(USER_STORAGE_KEY) : "";
         const user = jwtDecode<CustomJwtPayload>(token ?? '');
-        const role = user.role;
-        if (role == "admin") {
-            return true;
-        }
-        const permissions = user.permissions;     
+        const { permissions } = user;
         const permission = `${resource}:${action}`;
-        console.log("Checking permission:", permission, "for role:", role, "with permissions:", permissions);
-        return permissions.includes(permission);
+
+        return permissions.includes(permission) || permissions.includes("*:*");
     }
         
 };

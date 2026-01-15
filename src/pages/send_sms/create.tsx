@@ -67,10 +67,6 @@ export const SendSmsCreate = () => {
             <NumberInput source="number_cell_idx" />
             <TextInput source="from" />
         </SimpleForm>
-        <div className="h-4">
-                <SimpleWebSocketDemo />
-              </div>
-
         </>
         
     );

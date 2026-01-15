@@ -2,6 +2,8 @@ import { DataTable } from "@/components/admin/data-table";
 import { AutocompleteInput, DateTimeInput, DateField, List, SelectField, TextInput, ReferenceInput } from "@/components/admin";
 import { ReferenceField } from "@/components/admin/reference-field";
 import { LongTextField } from "@/components/field/LongTextField";
+import { Loading } from "@/components/admin/loading";
+import { Suspense } from "react";
 
 const sdrFilters = [
     <DateTimeInput source="created_at_gte" alwaysOn label={false} />,
@@ -40,28 +42,29 @@ const sdrFilters = [
         label={false}
         placeholder="Deliver Result"
     />,
-    <ReferenceInput label={false} source="tenant_id" reference="tenant" alwaysOn>
-        <AutocompleteInput label={false} placeholder="Tenant" />
-    </ReferenceInput>,
-    <ReferenceInput label={false} source="customer_id" reference="customer" alwaysOn>
-        <AutocompleteInput label={false} placeholder="Customer" />
-    </ReferenceInput>,
-    <ReferenceInput label={false} source="agent_id" reference="agent" alwaysOn>
-        <AutocompleteInput label={false} placeholder="Agent" />
-    </ReferenceInput>,
+    // <ReferenceInput label={false} source="tenant_id" reference="tenant" alwaysOn>
+    //     <AutocompleteInput label={false} placeholder="Tenant" />
+    // </ReferenceInput>,
+    // <ReferenceInput label={false} source="customer_id" reference="customer" alwaysOn>
+    //     <AutocompleteInput label={false} placeholder="Customer" />
+    // </ReferenceInput>,
+    // <ReferenceInput label={false} source="agent_id" reference="agent" alwaysOn>
+    //     <AutocompleteInput label={false} placeholder="Agent" />
+    // </ReferenceInput>,
 
-    <ReferenceInput label={false} source="route_id" reference="routing" alwaysOn >
-        <AutocompleteInput label={false} placeholder="Routing" />
-    </ReferenceInput>,
-    <ReferenceInput label={false} source="channel_id" reference="channel" alwaysOn>
-        <AutocompleteInput label={false} placeholder="Channel" />
-    </ReferenceInput>,
+    // <ReferenceInput label={false} source="route_id" reference="routing" alwaysOn >
+    //     <AutocompleteInput label={false} placeholder="Routing" />
+    // </ReferenceInput>,
+    // <ReferenceInput label={false} source="channel_id" reference="channel" alwaysOn>
+    //     <AutocompleteInput label={false} placeholder="Channel" />
+    // </ReferenceInput>,
 
 ];
 
 export const SdrList = () => (
-    <List filters={sdrFilters} sort={{ field: "created_at", order: "DESC" }} loading={<>Loading...</>}>
-        <DataTable loading={<>Loading...</>} rowClick={false} bulkActionButtons={false}>
+<List filters={sdrFilters} sort={{ field: "created_at", order: "DESC" }} >
+
+        <DataTable rowClick={false} bulkActionButtons={false}>
             <DataTable.Col source="created_at">
                 <DateField source="created_at" showTime={true} />
             </DataTable.Col>
@@ -169,5 +172,7 @@ export const SdrList = () => (
                 />
             </DataTable.Col>
         </DataTable>
+
     </List>
+    
 );
